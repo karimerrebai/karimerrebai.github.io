@@ -13,20 +13,30 @@
 */
 
 // smooth scroll
-$(document).ready(function(){
-	$(".nav-link").on('click', function(event) {
+$(document).ready(function () {
+  $(".nav-link").on("click", function (event) {
+    if (this.hash !== "") {
+      event.preventDefault();
 
-    	if (this.hash !== "") {
+      var hash = this.hash;
 
-			event.preventDefault();
-
-			var hash = this.hash;
-
-			$('html, body').animate({
-				scrollTop: $(hash).offset().top
-			}, 700, function(){
-				window.location.hash = hash;
-			});
-      	} 
-    });
+      $("html, body").animate(
+        {
+          scrollTop: $(hash).offset().top,
+        },
+        700,
+        function () {
+          window.location.hash = hash;
+        }
+      );
+    }
+  });
 });
+document
+  .getElementById("downloadButton")
+  .addEventListener("click", function () {
+    var link = document.createElement("a");
+    link.href = "assets/imgs/Karim_Errebai_cv.pdf";
+    link.download = "Karim_Errebai_cv.pdf";
+    link.click();
+  });
